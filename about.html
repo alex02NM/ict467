@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="about.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">About</a>
+    <a href="blog.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Blog</a>
+    <a href="learn_webgl.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Learn WEBGL</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="contact.html" class="w3-bar-item w3-button">Contact</a>
+        <a href="resume.html" class="w3-bar-item w3-button">Resume</a>
+      </div>
+    </div>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+</div>
+
+
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">About page</h2>
+    <p class="w3-opacity"><i>Why this website</i></p>
+    <p class="w3-justify">Hello welcome to my website there will be multiple pages on this website and there are 6 pages the first page is home which is a quick welcome tell website and you’re currently inside our About page which gives information more in-depth our website and next is our resume which representing certain information about me and my background there also will be a contact page which is certain information on how to contact the owner of this web page and if any users have any questions and concerns next is the blog page which will give frequent updates on the progress of this current website and other projects and lastly is the learn web GL page which gives the user information on how to learn about web GL and even provide certain tutorials on how to use WebGL code and even give a quick introduction of tools that will be used and how to prepare you to keep on learning about webgl graphics for the web. My goal for this website is for people to keep on learning and keep on exploring different types of tools for programming this will also include many tools for the web and for how to use your static code as much as possible due to how static code is very cheap to host online and it is so cheap to the point you’re able to host your code for free on GitHub an example and even provides cheaper alternatives than WordPress and even will teach you how to use static code for you to be more confident with your quote and even use tools on the graphics and even support multiple platforms from mobile to PC to laptops and even different types of operating systems. Overall even if you are eager to keep on learning and want to expand your knowledge of web development this is the right place for you and I’m glad to have you here</p>
+   
+
+        <p>Perlin noise voxel</p>
+        <img src="images/about.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+      </div>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

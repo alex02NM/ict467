@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit HTML and JavaScript Inside Iframe</title>
+    <style>
+        /* Define theme color */
+        .theme-color {
+            color: #007bff; /* Blue color, change this to your desired theme color */
+        }
+
+        /* Style input elements */
+        .editor-container {
+            text-align: center;
+        }
+
+        textarea {
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333; /* Default text color */
+        }
+
+        /* Apply theme color to text inside textarea with the theme-color class */
+        textarea.theme-color {
+            color: #007bff; /* Blue color, change this to your desired theme color */
+        }
+
+        /* Style iframe */
+        iframe {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit HTML and JavaScript Inside Iframe</h1>
+    
+    <!-- First set of inputs and iframe -->
+    <div class="editor-container">
+
+        <textarea id="htmlInput1" class="theme-color" rows="5" cols="50" oninput="updateIframe(1)">
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <canvas id="myCanvas" width="200" height="100"></canvas>
+
+
+</body>
+</html>
+
+         
+
+        </textarea><br>
+        <textarea id="jsInput1" class="theme-color" rows="5" cols="50" oninput="updateIframe(1)">
+// JavaScript code here
+const canvas = document.getElementById("myCanvas");
+
+// Initialize the GL context
+const gl = canvas.getContext("webgl");
+
+// Only continue if WebGL is available
+if (!gl) {
+  alert("Your browser does not support WebGL.");
+}
+
+// Set color buffer to red (1,0,0) and opaque (1)
+gl.clearColor(1, 0, 0, 1);
+
+//Set the color with the color buffer
+gl.clear(gl.COLOR_BUFFER_BIT);
+
+        </textarea><br>
+        <iframe id="previewIframe1" width="400" height="300" frameborder="0"></iframe>
+    </div>
+
+    <hr>
+
+    <!-- Second set of inputs and iframe -->
+    <div class="editor-container">
+        <textarea id="htmlInput2" class="theme-color" rows="5" cols="50" oninput="updateIframe(2)"></textarea><br>
+        <textarea id="jsInput2" class="theme-color" rows="5" cols="50" oninput="updateIframe(2)">
+// JavaScript code here
+const canvas = document.getElementById("myCanvas");
+
+// Initialize the GL context
+const gl = canvas.getContext("webgl");
+
+// Only continue if WebGL is available
+if (!gl) {
+  alert("Your browser does not support WebGL.");
+}
+
+// Set color buffer to red (1,0,0) and opaque (1)
+gl.clearColor(1, 0, 0, 1);
+
+//Set the color with the color buffer
+gl.clear(gl.COLOR_BUFFER_BIT);
+        </textarea><br>
+        <iframe id="previewIframe2" width="400" height="300" frameborder="0"></iframe>
+    </div>
+    
+    <script>
+
+        updateIframe(1);
+        function updateIframe(index) {
+            var htmlContent = document.getElementById('htmlInput' + index).value;
+            var jsContent = document.getElementById('jsInput' + index).value;
+            var iframe = document.getElementById('previewIframe' + index);
+            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            
+            // Clear previous content
+            iframeDocument.open();
+            iframeDocument.write('');
+            iframeDocument.close();
+            
+            // Write the HTML content into the iframe
+            iframeDocument.write(htmlContent);
+            
+            // Check if canvas already exists
+            var existingCanvas = iframeDocument.getElementById('canvas');
+            if (existingCanvas) {
+                existingCanvas.parentNode.removeChild(existingCanvas); // Remove existing canvas
+            }
+            
+            // Append the JavaScript code into the iframe
+            var script = iframeDocument.createElement('script');
+            script.textContent = jsContent;
+            iframeDocument.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>
